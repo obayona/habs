@@ -36,9 +36,7 @@ class Migration(migrations.Migration):
             name='TimeSerie',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('description', models.CharField(max_length=50)),
-                ('variable', models.CharField(max_length=30)),
-                ('station', models.ForeignKey(to='meteorology.Station')),
+                ('name', models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
@@ -49,10 +47,20 @@ class Migration(migrations.Migration):
                 ('description', models.CharField(max_length=150)),
             ],
         ),
+        migrations.CreateModel(
+            name='Variable',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=30)),
+                ('description', models.CharField(max_length=50)),
+                ('station', models.ForeignKey(to='meteorology.Station')),
+                ('unit', models.ForeignKey(to='meteorology.Unit', on_delete=django.db.models.deletion.PROTECT)),
+            ],
+        ),
         migrations.AddField(
             model_name='timeserie',
-            name='unit',
-            field=models.ForeignKey(to='meteorology.Unit', on_delete=django.db.models.deletion.PROTECT),
+            name='variable',
+            field=models.ForeignKey(to='meteorology.Variable'),
         ),
         migrations.AddField(
             model_name='entry',

@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core import serializers
 from django.template import RequestContext
-from models import Station,Unit,TimeSerie,Entry
+from models import Station,Unit,Variable,TimeSerie,Entry
 
 def index(request):
 	return render_to_response('meteorology/index.html',RequestContext(request,{},))
@@ -28,21 +28,52 @@ def station(request,station_id):
 	return render_to_response('meteorology/station.html',RequestContext(request,{"data":data},))
 
 
-def timeSeries(request,station_id):
+def variables(request,station_id):
 	station_id = int(station_id);
-	timeSeries = TimeSerie.objects.filter(station_id = station_id);
+	variablesList = Variable.objects.filter(station_id = station_id);
+	elements = [];
+	for variable in variablesList:
+		v = {};
+		v["pk"] = variable.pk;
+		v["name"] = variable.name;
+		v["description"] = variable.description;
+		u = {};
+		u["representation"] = variable.unit.representation;
+		u["description"] = variable.unit.description;
+		v["unit"] = u;
+		elements.append(v)
+
+	data = {"variables":elements};
+	return HttpResponse(json.dumps(data), content_type='application/json')
+
+
+def timeSeries(request,variable_id):
+	variable_id = int(variable_id);
+	timeSeries = TimeSerie.objects.filter(variable = variable_id);
 	series = []
 	for ts in timeSeries:
 		timeSerie = {}
-		timeSerie["description"] = ts.description
-		timeSerie["variable"] = ts.variable
-		timeSerie["unit_representation"] = ts.unit.representation
-		timeSerie["unit_description"] = ts.unit.description
 		timeSerie["pk"] = ts.pk
+		timeSerie["name"] = ts.name
 		series.append(timeSerie)
 
-	return HttpResponse(json.dumps(series), content_type='application/json')
+	data = {"timeSeries":series};
+	return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 
+def entries(request,timeserie_id):
+	timeserie_id = int(timeserie_id);
+	objects = Entry.objects.filter(timeSeries = timeserie_id).order_by('year','month');
+	x = []
+	y = []
+	
+	for e in objects:
+		y.append(e.value);
+		year = e.year;
+		month = e.month;
+		date_string = str(year) + "-" + str(month);
+		x.append(date_string);
 
+	data = {"entries":{"x":x,"y":y}}
+	return HttpResponse(json.dumps(data), content_type='application/json')

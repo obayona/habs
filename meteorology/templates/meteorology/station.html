@@ -5,36 +5,52 @@
 {% block body_outer %}
 {% block body %}
 
-<div class="row">
 
-	<div id="info" class="col-md-2">
-		<div><h4>{{ data.name }}</h4></div>
-		<div>
-			<div><b>Code: </b>{{ data.code }}</div>
-			<div><b>Province: </b>{{ data.province }}</div>
-			<div><b>Longitude: </b>{{ data.longitude }}</div>
-			<div><b>Latitude: </b>{{ data.latitude }}</div>
-			<div><b>Elevation: </b>{{ data.elevation }}</div>
+<div id= "page" class = "container">
+
+	<div class="col-md-2" >
+		<div>	
+				
+			<div><h4>{{ data.name }}</h4></div>
+			<div>
+				<div><b>Code: </b>{{ data.code }}</div>
+				<div><b>Province: </b>{{ data.province }}</div>
+				<div><b>Longitude: </b>{{ data.longitude }}</div>
+				<div><b>Latitude: </b>{{ data.latitude }}</div>
+				<div><b>Elevation: </b>{{ data.elevation }}</div>
+			</div>
+			<div>
+				<div><b>Variables:</b></div>
+				<div id="variablesList"></div>
+				<div id="variableDetails"></div>
+			</div>		
+
 		</div>
-		<div>
-			<div><b>Time series:</b></div>
-			<div id="timeSeriesList"></div>
-		</div>		
+
+
 	</div>
-	<div id="plot" class="col-md-8">
-		
+
+	<div class="col-md-10">
+		<div id="timeSeries" class="text-center"></div>
 	</div>
-	<div id="legend" class="col-md-2">
-		
-	</div>
+
 
 </div>
 
+
+
 {% endblock body %}
 {% block sidebar %}{% endblock sidebar %}
+<link rel = "stylesheet" type="text/css" href="{{ STATIC_URL }}/">
+<script type="text/javascript" src="{{ STATIC_URL }}geonode/css/meteorology.css"></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type= "text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/plotter.js"></script>
+<script type= "text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/mediator.js"></script>
+<script type= "text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/variablesManager.js"></script>
+<script type= "text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/timeSeriesManager.js"></script>
+<script type= "text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/main.js"></script>
 
-<script type="text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/station.js"></script>
 <script type="text/javascript">
-	var idStation = {{ data.pk }}
+	var id_station = {{ data.pk }}
 </script>
 {% endblock body_outer %}

@@ -13,15 +13,6 @@ class Unit(models.Model):
 	representation = models.CharField(max_length=10)
 	description = models.CharField(max_length=150)
 
-"""
-
-class TimeSerie(models.Model):
-	description = models.CharField(max_length=50)	
-	variable = models.CharField(max_length=30)
-	unit = models.ForeignKey('Unit',on_delete=models.PROTECT)
-	station = models.ForeignKey('Station',on_delete=models.CASCADE)
-
-"""
 
 class Variable(models.Model):
 	name= models.CharField(max_length=30)
