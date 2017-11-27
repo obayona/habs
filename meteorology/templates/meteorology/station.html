@@ -1,0 +1,40 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block title %} {{block.super}} {% endblock %}
+{% block body_outer %}
+{% block body %}
+
+<div class="row">
+
+	<div id="info" class="col-md-2">
+		<div><h4>{{ data.name }}</h4></div>
+		<div>
+			<div><b>Code: </b>{{ data.code }}</div>
+			<div><b>Province: </b>{{ data.province }}</div>
+			<div><b>Longitude: </b>{{ data.longitude }}</div>
+			<div><b>Latitude: </b>{{ data.latitude }}</div>
+			<div><b>Elevation: </b>{{ data.elevation }}</div>
+		</div>
+		<div>
+			<div><b>Time series:</b></div>
+			<div id="timeSeriesList"></div>
+		</div>		
+	</div>
+	<div id="plot" class="col-md-8">
+		
+	</div>
+	<div id="legend" class="col-md-2">
+		
+	</div>
+
+</div>
+
+{% endblock body %}
+{% block sidebar %}{% endblock sidebar %}
+
+<script type="text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/station.js"></script>
+<script type="text/javascript">
+	var idStation = {{ data.pk }}
+</script>
+{% endblock body_outer %}

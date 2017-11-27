@@ -1,0 +1,28 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block title %} {{block.super}} {% endblock %}
+{% block body_outer %}
+{% block body %}
+
+<div class="row">
+
+	<div class="col-md-10">
+		<div style="height:20px;width:100%;"></div>
+		<div id="map-canvas" style="min-height:600px;width:100%;height:100%"></div>		
+	</div>
+	<div id="listStations" class="col-md-2">
+		<h3>Estaciones Meteorologicas</h3>
+		<ul id="listEstaciones">
+			
+		</ul>
+	</div>
+
+</div>
+
+{% endblock body %}
+{% block sidebar %}{% endblock sidebar %}
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBdfOhkWeCWolmN5xUvM_OtArSXcE1DD8E"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}geonode/js/meteorology/stations.js"></script>
+{% endblock body_outer %}
