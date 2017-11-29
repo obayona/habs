@@ -3,7 +3,7 @@ from . import views
 
 #urlpatterns = patterns('geonode.meteorology.views',url(r'^$','index',name='index'),)
 urlpatterns = [
-	url(r'^$',views.index,name='index'),
+	url(r'^$',views.index,name='meteorology'),
 	url(r'^stations/',views.stations,name='stations'),
 	url(r'^station/([0-9]+)',views.station,name='station'),
 	url(r'^variables/([0-9]+)',views.variables,name='variables'),
