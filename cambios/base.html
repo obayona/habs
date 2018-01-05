@@ -72,7 +72,7 @@
 								</div>
 
 								<div class="collapse navbar-collapse">
-									<ul class="menu nav navbar-nav sm">
+									<ul class="nav navbar-nav">
 									{% block tabs %}
 									<li id="nav_layers">
 								      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Data" %}<span class="sub-arrow">...</span></a>
@@ -120,19 +120,22 @@
 								    {% endblock %}
 								    {% endblock %}
 								  </ul>
-								      <ul class="menu nav navbar-nav sm">
+
+								  <ul class="nav navbar-nav nav-bar-right">
+
 								    <li>
-								      <div class="search">
-									<form id="search" action="{% url "search" %}" >
-									  <span class="fa fa-search"></span>
-									  {% if HAYSTACK_SEARCH %}
-									  <input id="search_input" type="text" placeholder="Search" name="q">
-									  {% else %}
-									  <input id="search_input" type="text" placeholder="Search" name="title__icontains">
-									  {% endif %}
-									</form>
-								      </div>
-									</li>
+                      <div class="search" style="margin-top:-10px;">
+                    <form id="search" action="{% url "search" %}" >
+                      <span class="fa fa-search"></span>
+                      {% if HAYSTACK_SEARCH %}
+                      <input id="search_input" type="text" placeholder="Search" name="q">
+                      {% else %}
+                      <input id="search_input" type="text" placeholder="Search" name="title__icontains">
+                      {% endif %}
+                    </form>
+                        </div>
+                    </li>
+
 								    {% if not user.is_authenticated and REGISTRATION_OPEN %}
 								    <li><a href="{% url "account_signup" %}">{% trans "Register" %}</a></li>
 								    {% endif %}
@@ -154,7 +157,7 @@
 									      {% else %}
 									      <li><a href="#" data-toggle="modal" data-target="#SigninModal" role="button" >{% trans "Sign in" %} </a></li>
 								      {% endif %}
-								    </ul>
+								  </ul>
 								</div>
 								<!--/ .nav-collapse-->
 
