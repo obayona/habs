@@ -49,9 +49,9 @@
 				</a>
 			</div>
 			<div class="col-md-10 col-sm-9 col-xs-6">
-				<h1 style="font-size:35px;margin-bottom:2px">Interacci&oacute;n entre Variabilidad Clim&aacute;tica, Bloom de algas nocivas 
+				<h1 style="font-size:32px;margin-bottom:2px">Interacci&oacute;n entre Variabilidad Clim&aacute;tica, Bloom de algas nocivas 
 				y su impacto en salud humana</h1>
-				<h3 style="margin: 0;">Proyecto HABs</h3>
+				<h3 style="margin: 0;font-size:24px;margin-bottom:2px;">Proyecto HABs</h3>
 			</div>
 		</div>
 	</div>
@@ -199,8 +199,8 @@
   </div>
 
   {% block footer %}
-  <footer>
-    <div class="container">
+
+    <footer class="container footer" style="background-color:#F8F8F8;">
       <div class="row">
         <div class="col-md-2">
           <ul class="list-unstyled">
@@ -224,7 +224,7 @@
             {% endif %}
           </ul>
         </div>
-		<div class="col-md-2">
+        <div class="col-md-2">
           <ul class="list-unstyled">
             <li>About</li>
             <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
@@ -260,8 +260,23 @@
           {% endif %}
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+    <footer class="container footer" style="background-color:#7A7A7A;">
+      <div class="row">
+        <div class="cont-footer">
+          <div class="col-lg-6 col-md-6 col-xs-6 text-left">
+            &#9400; El contenido de esta obra es de propiedad intelectual de la Espol y FIMCBOR.<br>
+            Todos los derechos reservados.&nbsp; Prohibida su reproducci&oacute;n total,&nbsp;parcial,&nbsp;
+            comunicaci&oacute;n<br> p&uacute;blica o distribuci&oacute;n sin autorizaci&oacute;n previa del titular de
+            los derechos.
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-6 text-right">
+            <img alt="FIMCBOR" class="img-responsive pull-right" src="{{ STATIC_URL }}geonode/img/fimcbor_footer.png">
+          </div>
+
+        </div>  
+      </div>
+    </footer>
   {% endblock footer %}
 
 
