@@ -1,0 +1,49 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load base_tags %}
+
+{% block title %} {% trans "Welcome!" %} - {{ block.super }} {% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block middle %}
+<div class="main-container container">
+  <div class="row">
+  
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="region-bloque-1">
+        <section class="block block-views clearfix">
+          <h2 class="block-title">Imagen</h2>
+
+        </section>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class = "region region-bloque-2">
+        <section class="block block-block clearfix">
+          <h2 class="block-title">Objetivos</h2>
+          <p>
+            "Este proyectp tiene como finalidad aportar al mejoramiento de la salud
+            al identificar el impacto de los patrones climaticos eb ka recurrente de algas nocivas
+            (HABs), y su potencial relacion con enfermedades asociadas al agua o al consumo de toxinas
+            en prductos del mar"
+          </p>
+          <br>
+          <p>
+            "Esta propuesta se enmarca en la responsabilidad de ESPOL de promover la interaccion
+            entre la investigacion cientifica y tecnologica y el sector de la salud publica, orientada
+            a la satisfaccion de las necesidades de un ambiente sano en la poblacion costera"
+          </p>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
+
