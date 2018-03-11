@@ -40,7 +40,7 @@ var VariablesManager = function(idContainerList, idContainerVariable){
 		var divDescription = document.createElement("div");
 		var divUnit = document.createElement("div");
 
-		divName.innerHTML = variable.name;
+		divName.innerHTML = "<b>"+variable.name+"</b>";
 		divDescription.innerHTML = "<p>" + variable.description + "</p>";
 		var unitString = "";
 		var unit = variable.unit;
@@ -86,25 +86,28 @@ var VariablesManager = function(idContainerList, idContainerVariable){
 			renderMessage("No data");
 			return;
 		}
-
+		
+		ul = document.createElement("ul");
+		ul.className = "nav";
 
 		for (i=0; i< numVariables; i++){
 			var v = variables[i];
-			var item = document.createElement("div");
+			var li = document.createElement("li");
+			var item = document.createElement("a");
+			li.appendChild(item);
 			item.innerHTML = v.name;
-			item.className = "list-group-item";
 			item.dataset.idVariable = v.pk;
 
 			item.addEventListener("click",function(event){
 				var pk = this.dataset.idVariable;
 				var variable = findVariable(pk);
-				selectItem(pk);
+				//selectItem(pk);
 				mediator.publish("loadVariable",variable);
 				renderVariable(variable);
 			})
-
-			containerList.append(item);
+			ul.append(li);
 		}
+		containerList.append(ul);
 
 	}
 

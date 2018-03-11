@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
+    <title>{% block title %}{% trans "HABs project" %}{% endblock %}</title>
     {% block head %}
       {% if DEBUG_STATIC %}
       <link href="{{ STATIC_URL }}lib/css/jquery.dataTables.css?v={{ VERSION }}" rel="stylesheet" />
@@ -49,9 +49,8 @@
 				</a>
 			</div>
 			<div class="col-md-10 col-sm-9 col-xs-6">
-				<h1 style="font-size:32px;margin-bottom:2px">Interacci&oacute;n entre Variabilidad Clim&aacute;tica, Bloom de algas nocivas 
-				y su impacto en salud humana</h1>
-				<h3 style="margin: 0;font-size:24px;margin-bottom:2px;">Proyecto HABs</h3>
+				<h1 style="font-size:32px;margin-bottom:2px">{% trans "Climate interaction with Harmful Bloom Algae (HABs) and their impact in human health" %}</h1>
+				<h3 style="margin: 0;font-size:24px;margin-bottom:2px;">{% trans "HABs project" %}</h3>
 			</div>
 		</div>
 	</div>
@@ -86,8 +85,8 @@
 									{% if user.is_authenticated %}
 									<li><a href="{% url "services" %}">{% trans "Remote Services" %}</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
-									<li><a href="{% url "document_upload" %}">Upload Document</a></li>
+									<li><a href="{% url "layer_upload" %}">{%trans "Upload Layer" %}</a></li>
+									<li><a href="{% url "document_upload" %}">{% trans "Upload Document" %}</a></li>
 									<li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
 									{% endif %}
 								      </ul>
@@ -212,8 +211,8 @@
             <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url "services" %}">{% trans "Remote Services" %}</a></li>
-            <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
-            <li><a href="{% url "document_upload" %}">Upload Document</a></li>
+            <li><a href="{% url "layer_upload" %}">{% trans "Upload Layer" %}</a></li>
+            <li><a href="{% url "document_upload" %}">{% trans "Upload Document" %}</a></li>
             <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
             {% endif %}
           </ul>

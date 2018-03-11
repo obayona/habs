@@ -11,18 +11,20 @@
 	<div class="col-md-2" >
 		<div>	
 				
-			<div><h4>{{ data.name }}</h4></div>
+			<div class="page-header"><h2>{{ data.name }}</h2></div>
+			<div class="tab-content">
+				<dl class="dl-horizontal">
+					<dt style="width:60px;">{% trans "Code"%}</dt><dd style="margin-left:80px;">{{ data.code }}</dd>
+					<dt style="width:60px;">{% trans "Province"%}</dt><dd style="margin-left:80px;">{{ data.province }}</dd>
+					<dt style="width:60px;">{% trans "Longitude"%}</dt><dd style="margin-left:80px;">{{ data.longitude }}</dd>
+					<dt style="width:60px;">{% trans "Latitude"%}</dt><dd style="margin-left:80px;">{{ data.latitude }}</dd>
+					<dt style="width:60px;">{% trans "Elevation"%}</dt><dd style="margin-left:80px;">{{ data.elevation }}</dd>
+				</dl>
+			</div>				
 			<div>
-				<div><b>Code: </b>{{ data.code }}</div>
-				<div><b>Province: </b>{{ data.province }}</div>
-				<div><b>Longitude: </b>{{ data.longitude }}</div>
-				<div><b>Latitude: </b>{{ data.latitude }}</div>
-				<div><b>Elevation: </b>{{ data.elevation }}</div>
-			</div>
-			<div>
-				<div><b>Variables:</b></div>
-				<div id="variablesList"></div>
-				<div id="variableDetails"></div>
+				<div><b>Variables</b></div>
+				<div><nav id="variablesList" class="filter"></nav></div>
+				<div id="variableDetails" style="padding-top:20px"></div>
 			</div>		
 
 		</div>

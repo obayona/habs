@@ -42,15 +42,15 @@ function addMarker(station, color){
 
 function renderStation(station){
 	var li = document.createElement("li")
-	var span = document.createElement("span")
+	var h4 = document.createElement("h4")
 	var a = document.createElement("a")	
 	a.innerHTML = station.name
 	a.href = "station/"+station.pk;
-	span.appendChild(a)
-	li.appendChild(span)
+	a.className = "ng-binding";
+	h4.appendChild(a)
+	li.appendChild(h4)
 	var color = getColor()
 	li.style.color = color;
-	a.style.color = 'black'
 	containerStations.appendChild(li)
 	addMarker(station,color);
 }

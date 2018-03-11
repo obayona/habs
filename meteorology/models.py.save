@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Station(models.Model):
 	code = models.CharField(max_length=6)
 	name = models.CharField(max_length=30)
@@ -32,3 +33,5 @@ class Entry(models.Model):
 	month = models.IntegerField() 
 	timeSeries = models.ForeignKey('TimeSerie',on_delete=models.CASCADE)	
 	
+class Data(models.Model):
+
